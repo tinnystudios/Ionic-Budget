@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Expenses
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--
+<p>Health: {{Health}}</p>
+-->
+
+<ion-content padding>
+
+<!--
+  <ion-list>
+    <ion-item *ngFor="let expense of Expenses">{{expense['name']}} ${{expense['cost']}}</ion-item>
+</ion-list>
+-->
+
+<ion-list>
+  <ion-item *ngFor="let expense of Expenses">{{expense['name']}} ${{expense['cost']}}</ion-item>
+</ion-list>
+
+<ion-item *ngFor="let expense of Budgets">{{expense['name']}}}}</ion-item>
+
+</ion-content>
