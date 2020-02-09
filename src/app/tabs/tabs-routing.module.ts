@@ -41,6 +41,14 @@ const routes: Routes = [
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
+      },
+      {
+        path: 'tab1/testpage',
+        loadChildren: () => import('../testpage/testpage.module').then(m => m.TestpagePageModule)
+      },
+      {
+        path: 'tab1/add-expense',
+        loadChildren: () => import('../add-expense/add-expense.module').then(m => m.AddExpensePageModule)
       }
     ]
   },

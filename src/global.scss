@@ -24,3 +24,39 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-item{
+    //--ion-background-color:rgb(241, 237, 237) !important;
+    //color: white;
+    color: rgb(95, 96, 100);
+    font-size: 12px;
+  }
+ 
+ #info 
+ {
+     color: rgb(95, 96, 100);
+     margin-left: 15px;
+     margin-right: 15px;
+     font-size: 12px;
+     vertical-align: auto;
+ }
+ 
+ #infoTitle
+ {
+     //background-color: rgb(171, 216, 230);
+     //background-color:
+     //color:  rgb(174, 226, 243);
+     font-size: 15px;
+     font-weight: bold;
+     text-decoration: underline;
+ }
+
+ #endSlot
+ {
+     margin-right: 15px;
+ }
+
+ #appBackground
+ {
+    background-color: rgb(171, 216, 230);
+ }

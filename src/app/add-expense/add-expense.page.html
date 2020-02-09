@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start" defaultHref="/tabs/tab1">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>AddExpense</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div id="info">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col><div><ion-input #inputName type="text" placeholder="Enter reason" ></ion-input></div></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><div><ion-input #inputCost type="text" placeHolder="Enter Cost"></ion-input></div></ion-col>
+      </ion-row>
+    </ion-grid>
+
+  <ion-button expand="block" (click)="onSubmit()">Add Expense</ion-button>
+
+</div>
+
+</ion-content>

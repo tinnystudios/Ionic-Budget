@@ -1,27 +1,28 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Expenses
+      Budgets
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<!--
-<p>Health: {{Health}}</p>
--->
-
 <ion-content padding>
 
-<!--
-  <ion-list>
-    <ion-item *ngFor="let expense of Expenses">{{expense['name']}} ${{expense['cost']}}</ion-item>
-</ion-list>
--->
-
 <ion-list>
-  <ion-item *ngFor="let expense of Expenses">{{expense['name']}} ${{expense['cost']}}</ion-item>
+  <ion-item (click)="OnBudgetClicked(i)" *ngFor="let budget of Budgets; let i = index">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col><img width="50px" src='{{budget.iconUrl}}'></ion-col>
+        <ion-col>{{budget.name}}</ion-col>
+        <ion-col>${{budget.spent}}/{{budget.amount}}</ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-item>
 </ion-list>
 
-<ion-item *ngFor="let expense of Budgets">{{expense['name']}}}}</ion-item>
+
+
 
 </ion-content>

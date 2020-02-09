@@ -1,87 +1,75 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JsonPipe } from '@angular/common';
+import { Router, NavigationExtras } from '@angular/router';
+import {ExpenseModel, BudgetModel} from '../app.module'
+import { TestpagePage } from '../testpage/testpage.page';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
+
 
   Health: string;
-  Expenses: ExpenseModel[];
   Budgets: BudgetModel[];
+  Expenses: ExpenseModel[];
 
-  constructor(public http: HttpClient){
-
-    this.getHealth();
-    this.getBudgets();
-    this.getExpenses();
-  }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoaded');
+  constructor(private router : Router, private data: DataService){
   }
 
-  getHealth(){
-    this.http.get('https://fountainless-butterfly-1908.dataplicity.io/GetHealth.php')
-    .subscribe((response) => {
-      console.log(response);
-      var healthResponse = response as HealthResponse;
-      this.Health = healthResponse.Status;
+  ngOnInit(): void {
+
+    this.data.getBudgets().subscribe(x => {
+      this.Budgets = x;
+
+      this.data.getExpenses().subscribe(x => {
+        this.Expenses = x;
+
+        this.Budgets.forEach(budget => {
+          budget.expenses = this.Expenses.filter(
+            x => x['budgetId'] === budget['id']);
+    
+
+          let sum = 0;
+          for (let expense of budget.expenses) {
+            sum += Number(expense.cost);
+          }
+
+          budget.spent = sum;
+
+        });
+      });
     });
-  }
 
-  getBudgets()
-  {
-    this.http.get('https://fountainless-butterfly-1908.dataplicity.io/GetBudgets.php')
-    .subscribe((response) => {
-      console.log(response);
-      var budgetsResponse = response as BudgetsResponse;
-      this.Budgets = budgetsResponse.Budgets;
+    this.data.getHealth().subscribe(x => {
+      this.Health = x.status;
     });
+
+
   }
 
-  getExpenses()
+  OnBudgetClicked(id : any)
   {
-   this.http.get('https://fountainless-butterfly-1908.dataplicity.io/GetExpenses.php', {responseType: 'text'})
-   .subscribe((data) => {
-    console.log(data);
-    this.Expenses = JSON.parse(data);
-    //console.log(this.Expenses[0]["name"]);
-   });
+    var target = this.Budgets[id];
+    console.log(target['name']);
+
+    target.expenses = this.Expenses.filter(
+    x => x['budgetId'] === target['id']);
+    
+    let navigationExtras: NavigationExtras = {
+      state: {
+        budget: target
+      }
+    };
+
+    this.router.navigateByUrl('/tabs/tab1/testpage', navigationExtras);
   }
+
 }
 
-class HealthResponse
-{
-  public Status: string;
-}
 
-class BudgetsResponse
-{
-  public Budgets: Array<BudgetModel>;
-}
 
-class ExpensesReponse
-{
-  public Expenses: Array<ExpenseModel>;
-}
-
-class BudgetModel
-{
-  public Id: any;
-  public Name: string;
-  public Expenses: Array<ExpenseModel>;
-}
-
-class ExpenseModel
-{
-  public Id: any;
-  public Name: any;
-  public Cost: any;
-
-  constructor(){
-
-  }
-}

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { TestpagePage } from '../testpage/testpage.page';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +10,17 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(private router: Router) {
 
+  }
+  onTest(){
+
+    let navigationExtras: NavigationExtras = {
+      state: {
+        testData: 5
+      }
+    };
+
+    this.router.navigateByUrl('/tabs/tab2/testpage', navigationExtras);
+  }
 }

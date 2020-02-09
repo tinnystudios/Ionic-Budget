@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" defaultHref="/tabs/tab2">
+      <ion-back-button></ion-back-button>
+      <img width="30px" src='{{budget.iconUrl}}'>
+    </ion-buttons>
+ 
+    <ion-title>{{budget['name']}}</ion-title>
+    <ion-button id="endSlot" slot="end" (click)="onNewExpense()">+</ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <div id="info">
+    <h4 id="infoTitle"><img height="20px" src="https://img.icons8.com/color/48/000000/brief.png"> Overview</h4>
+    
+<ion-grid>
+<ion-row>
+  <ion-col>Budget</ion-col>
+  <ion-col>${{budget.amount}}</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col>Spent</ion-col>
+  <ion-col>${{spent}}</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col>Remaining</ion-col>
+  <ion-col>${{remaining.toFixed(2)}}</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col>End Date</ion-col>
+  <ion-col>{{endDate}}</ion-col>
+</ion-row>
+</ion-grid>
+</div>
+
+<div id="info">
+
+ <div height="30px">
+  <h4 id="infoTitle"> <img height="20px"src="https://img.icons8.com/officel/16/000000/nook.png"> Expenses</h4>
+ </div>
+
+<ion-list > 
+  <ion-item *ngFor="let expense of budget.expenses">
+    <ion-grid>
+    <ion-row>
+      <ion-col><img width="50px" src="https://img.icons8.com/cute-clipart/64/000000/low-price-pound.png"></ion-col>
+      <ion-col>{{expense['name']}}</ion-col>
+      <ion-col>${{expense['cost']}}</ion-col>
+      <ion-col>{{data.formatJustDate(expense.purchaseDate)}}</ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-item>
+ </ion-list>
+</div>
+
+</ion-content>
+            
+
+
+
+
+
+
