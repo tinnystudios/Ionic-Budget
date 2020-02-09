@@ -23,7 +23,7 @@ export class AddBudgetPage implements OnInit {
   { 
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.budgets = this.router.getCurrentNavigation().extras.state.budgets;
+        //this.budgets = this.router.getCurrentNavigation().extras.state.budgets;
       }
     });
   }
@@ -57,6 +57,7 @@ export class AddBudgetPage implements OnInit {
         loader.dismiss();
         this.posting = false;
         this.navCtrl.back();
+
         /*
           this.data.getBudgets().subscribe(x => 
             {

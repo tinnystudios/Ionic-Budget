@@ -79,13 +79,7 @@ export class Tab1Page implements OnInit {
 
   onNewBudget()
   {
-    let navigationExtras: NavigationExtras = {
-      state: {
-        budgetsController: this
-      }
-    };
-
-    this.router.navigateByUrl('/tabs/tab1/add-budget', navigationExtras);
+    this.router.navigateByUrl('/tabs/tab1/add-budget');
   }
 
 }
