@@ -39,15 +39,20 @@ export class TestpagePage implements OnInit {
         this.router.navigateByUrl('', { replaceUrl: true });
     }
 
+    var id = this.budget.id;
+    var expenses = this.data.getExpenses().subscribe(x => 
+      {
+          this.budget.expenses = x.filter(
+          x => x['budgetId'] === id);
+      });
+
     let sum = 0;
     for (let expense of this.budget.expenses) {
       sum += Number(expense.cost);
      }
-    console.log(sum);
     this.spent = sum;
-
     this.remaining = Number(this.budget.amount) - Number(this.spent);
-
+    
     this.endDate = this.data.formatJustDate(this.budget.endDate);
   }
 
