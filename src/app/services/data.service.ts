@@ -56,14 +56,18 @@ console.log(this.http , "htt[p")
     return this.datePipe.transform(date,'dd-MM-yy' );
   }
 
+  formatJustFullDate(date= new Date()) {
+    return this.datePipe.transform(date,'yyyy-MM-dd');
+  }
+
   today() {
-    return this.formatJustDate();
+    return this.formatJustFullDate();
   }
 
   addToToday(days: number){
     var today = new Date();
     var out = today.setDate(today.getDate() + days);
-    return this.formatJustDate(today);
+    return this.formatJustFullDate(today);
   }
 }
 
