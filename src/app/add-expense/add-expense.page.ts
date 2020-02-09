@@ -27,7 +27,6 @@ export class AddExpensePage implements OnInit {
   }
 
   ngOnInit() {
-    this.posting = false;
     if(this.budget == null)
     {
         console.log("boot");
@@ -57,31 +56,9 @@ export class AddExpensePage implements OnInit {
           {
               this.budget.expenses = x.filter(x => x['budgetId'] === id);
               loader.dismiss();
+              this.posting = false;
               this.navCtrl.back();
           });
       })
-  }
-
-  async presentLoading() {
-    const loading = await this.loadingController.create({
-      message: 'Hellooo',
-      duration: 2000
-    });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
-
-    console.log('Loading dismissed!');
-  }
-
-  async presentLoadingWithOptions() {
-    const loading = await this.loadingController.create({
-      spinner: null,
-      duration: 5000,
-      message: 'Please wait...',
-      translucent: true,
-      cssClass: 'custom-class custom-loading'
-    });
-    return await loading.present();
   }
 }

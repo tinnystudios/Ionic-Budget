@@ -36,15 +36,14 @@ console.log(this.http , "htt[p")
     headersOption.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
  
     return this.http.post("https://fountainless-butterfly-1908.dataplicity.io/AddExpenses2.php", data, {headers:headersOption, responseType: "text"});    
+  }
 
-    /*
-    .subscribe(data => {
-      console.log(data);
-     }, error => {
-      console.log(error);
-    })
-    }
-    */
+  postBudget(data : BudgetModel) : Observable<any>{
+    const headersOption = new HttpHeaders();
+    headersOption.append("Accept", 'application/json');
+    headersOption.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+ 
+    return this.http.post("https://fountainless-butterfly-1908.dataplicity.io/AddBudgets2.php", data, {headers:headersOption, responseType: "text"});    
   }
 
   formatDate(date= new Date()) {
@@ -56,8 +55,24 @@ console.log(this.http , "htt[p")
   formatJustDate(date= new Date()) {
     return this.datePipe.transform(date,'dd-MM-yy' );
   }
+
+  today() {
+    return this.formatJustDate();
+  }
+
+  addToToday(days: number){
+    var today = new Date();
+    var out = today.setDate(today.getDate() + days);
+    return this.formatJustDate(today);
+  }
 }
 
+enum ERepeatType {
+  once,
+  weekly,
+  fortnightly,
+  monthly,
+}
 
 export class HealthResponse {
     public status: string;

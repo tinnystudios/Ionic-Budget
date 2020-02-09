@@ -19,10 +19,19 @@ export class Tab1Page implements OnInit {
   Expenses: ExpenseModel[];
 
   constructor(private router : Router, private data: DataService){
+
   }
 
   ngOnInit(): void {
+    this.getContext();
 
+    this.data.getHealth().subscribe(x => {
+      this.Health = x.status;
+    });
+  }
+
+  getContext()
+  {
     this.data.getBudgets().subscribe(x => {
       this.Budgets = x;
 
@@ -44,12 +53,6 @@ export class Tab1Page implements OnInit {
         });
       });
     });
-
-    this.data.getHealth().subscribe(x => {
-      this.Health = x.status;
-    });
-
-
   }
 
   OnBudgetClicked(id : any)
@@ -67,6 +70,22 @@ export class Tab1Page implements OnInit {
     };
 
     this.router.navigateByUrl('/tabs/tab1/testpage', navigationExtras);
+  }
+
+  ionViewWillEnter()
+  {
+    this.getContext();
+  }
+
+  onNewBudget()
+  {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        budgetsController: this
+      }
+    };
+
+    this.router.navigateByUrl('/tabs/tab1/add-budget', navigationExtras);
   }
 
 }

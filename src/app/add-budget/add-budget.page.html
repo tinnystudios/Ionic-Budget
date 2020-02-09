@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start" defaultHref="/tabs/tab1">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Add Budget</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div id="info">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col><div><ion-input #inputName type="text" placeholder="Enter name" ></ion-input></div></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><div><ion-input #inputAmount type="text" value="100" placeHolder="Enter budget"></ion-input></div></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><div><ion-input #inputStartDate type="text" value={{data.today()}} placeHolder="Select start date"></ion-input></div></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><div><ion-input #inputEndDate type="text" value={{data.addToToday(14)}} placeHolder="Select end date"></ion-input></div></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-item>
+              <ion-label>Recurrance</ion-label>
+              <ion-select #inputRepeatType placeholder="Select One" value = 2>
+                <ion-select-option value="0">Never</ion-select-option>
+                <ion-select-option value="1">Weekly</ion-select-option>
+                <ion-select-option value="2">Fortnightly</ion-select-option>
+                <ion-select-option value="3">Monthly</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div></ion-col>
+      </ion-row>
+    </ion-grid>
+
+  <ion-button expand="block" (click)="onSubmit()">Add Budget</ion-button>
+
+</div>
+
+</ion-content>

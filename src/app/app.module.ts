@@ -47,10 +47,9 @@ export class BudgetModel
   public amount: any;
   public repeatType: any;
   public endDate: any;
+  public startDate: any;
   public expenses: Array<ExpenseModel>;
-
   public iconUrl: string;
-
   public spent: any;
 
 }
