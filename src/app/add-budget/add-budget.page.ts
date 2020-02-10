@@ -18,6 +18,21 @@ export class AddBudgetPage implements OnInit {
   @ViewChild('inputRepeatType',{static: false}) inputRepeatType: ElementRef;
   posting: boolean;
   budgets: BudgetModel[];
+  selectedUrl: any;
+
+  icons: string[] = [
+    "https://img.icons8.com/color/48/000000/brief.png",
+    "https://img.icons8.com/pastel-glyph/64/000000/cat--v1.png",
+    "https://img.icons8.com/cute-clipart/64/000000/cat.png",
+    "https://img.icons8.com/bubbles/50/000000/cat.png",
+    "https://img.icons8.com/cotton/64/000000/cat--v3.png",
+    "https://img.icons8.com/cotton/64/000000/cat--v1.png",
+    "https://img.icons8.com/dusk/64/000000/theme-park.png",
+    "https://img.icons8.com/dusk/64/000000/restaurant.png",
+    "https://img.icons8.com/cute-clipart/64/000000/shopping-cart-loaded.png",
+    "https://img.icons8.com/cute-clipart/50/000000/cat.png",
+    "https://img.icons8.com/officel/64/000000/train.png",
+  ];
 
   constructor(public data: DataService, private route: ActivatedRoute, private router: Router, private navCtrl: NavController, public loadingController: LoadingController) 
   { 
@@ -47,7 +62,7 @@ export class AddBudgetPage implements OnInit {
       budgetModel.endDate = this.inputEndDate['value'] + "T00:00:00";
 
       budgetModel.repeatType = this.inputRepeatType['value'];
-      budgetModel.iconUrl = "https://img.icons8.com/ultraviolet/48/000000/new.png"
+      budgetModel.iconUrl = this.selectedUrl != null ? this.selectedUrl : "https://img.icons8.com/ultraviolet/48/000000/new.png";
 
       const loader = await this.loadingController.create({message: "Posting Budget"});
       loader.present();
@@ -57,16 +72,11 @@ export class AddBudgetPage implements OnInit {
         loader.dismiss();
         this.posting = false;
         this.navCtrl.back();
-
-        /*
-          this.data.getBudgets().subscribe(x => 
-            {
-              this.budgets = x;
-              loader.dismiss();
-              this.posting = false;
-              this.navCtrl.back();
-            });
-            */
       })
+  }
+
+  onUrlSelected(url: any)
+  {
+    this.selectedUrl = url;
   }
 }

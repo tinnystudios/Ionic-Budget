@@ -18,7 +18,7 @@
         <ion-col><div><ion-input #inputName type="text" placeholder="Enter name" ></ion-input></div></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><div><ion-input #inputAmount type="text" placeHolder="Enter budget"></ion-input></div></ion-col>
+        <ion-col><div><ion-input #inputAmount type="text" placeholder="Enter budget"></ion-input></div></ion-col>
       </ion-row>
       <ion-row>
         <ion-col><div><ion-input #inputStartDate type="text" value={{data.today()}} placeHolder="Select start date"></ion-input></div></ion-col>
@@ -39,6 +39,11 @@
               </ion-select>
             </ion-item>
           </div></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-item *ngFor="let url of icons">
+          <button id="button-icon" (click)='onUrlSelected(url)'><img width="50px" src='{{url}}'></button>
+        </ion-item>
       </ion-row>
     </ion-grid>
 

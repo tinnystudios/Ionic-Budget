@@ -30,8 +30,8 @@ ion-item{
     //color: white;
     color: rgb(95, 96, 100);
     font-size: 12px;
-  }
- 
+}
+
  #info 
  {
      color: rgb(95, 96, 100);
@@ -39,6 +39,8 @@ ion-item{
      margin-right: 15px;
      font-size: 12px;
      vertical-align: auto;
+
+     
  }
  
  #infoTitle
@@ -60,3 +62,25 @@ ion-item{
  {
     background-color: rgb(171, 216, 230);
  }
+ 
+ #button-icon
+ {
+     margin-top: 10px;
+     margin-bottom: 10px;
+     border-radius: 12px;
+ }
+
+ion-row {
+    //text-align: center;
+    align-items: center;
+    align-content: center;
+
+    display: flex;
+justify-content: center;
+}
+
+ :focus {
+     outline: none;
+    border: 5px solid rgb(126, 202, 212);
+    border-radius: 12px;
+}
