@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JsonPipe } from '@angular/common';
 import { Router, NavigationExtras } from '@angular/router';
@@ -12,7 +12,6 @@ import { DataService } from '../services/data.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-
 
   Health: string;
   Budgets: BudgetModel[];

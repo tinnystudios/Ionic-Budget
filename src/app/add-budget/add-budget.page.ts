@@ -23,9 +23,7 @@ export class AddBudgetPage implements OnInit {
   icons: string[] = [
     "https://img.icons8.com/color/48/000000/brief.png",
     "https://img.icons8.com/pastel-glyph/64/000000/cat--v1.png",
-    "https://img.icons8.com/cute-clipart/64/000000/cat.png",
     "https://img.icons8.com/bubbles/50/000000/cat.png",
-    "https://img.icons8.com/cotton/64/000000/cat--v3.png",
     "https://img.icons8.com/cotton/64/000000/cat--v1.png",
     "https://img.icons8.com/dusk/64/000000/theme-park.png",
     "https://img.icons8.com/dusk/64/000000/restaurant.png",

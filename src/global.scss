@@ -25,9 +25,15 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+
+ion-title
+{
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 ion-item{
-    //--ion-background-color:rgb(241, 237, 237) !important;
-    //color: white;
     color: rgb(95, 96, 100);
     font-size: 12px;
 }
@@ -39,15 +45,10 @@ ion-item{
      margin-right: 15px;
      font-size: 12px;
      vertical-align: auto;
-
-     
  }
  
  #infoTitle
  {
-     //background-color: rgb(171, 216, 230);
-     //background-color:
-     //color:  rgb(174, 226, 243);
      font-size: 15px;
      font-weight: bold;
      text-decoration: underline;
@@ -63,12 +64,7 @@ ion-item{
     background-color: rgb(171, 216, 230);
  }
  
- #button-icon
- {
-     margin-top: 10px;
-     margin-bottom: 10px;
-     border-radius: 12px;
- }
+
 
 ion-row {
     //text-align: center;
@@ -76,11 +72,26 @@ ion-row {
     align-content: center;
 
     display: flex;
-justify-content: center;
+    justify-content: center;
 }
 
- :focus {
-     outline: none;
+
+#button-icon 
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+}
+
+:focus {
+    outline: none;
     border: 5px solid rgb(126, 202, 212);
     border-radius: 12px;
+}
+
+.testanimate
+{
+    width: 250px;
+    height: 250px;
+    background-color: blue;
 }
